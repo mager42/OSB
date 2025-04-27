@@ -28,11 +28,6 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("pictureUtils", &pictureUtils);
     engine.rootContext()->setContextProperty("settingsManager", &settingsManager);
 
-//    gst_init(nullptr, nullptr);
-//    // Create a GStreamer pipeline using videotestsrc
-//    GstElement* pipeline = gst_parse_launch("libcamerasrc ! video/x-raw,width=1920,height=1080,framerate=30/1 ! queue ! waylandsink fullscreen=true", nullptr);
-//    gst_element_set_state(pipeline, GST_STATE_PLAYING);
-
     GstreamerPipeline myPipeline(/*screen->size().width(), screen->size().height()*/2304, 1296);
     engine.rootContext()->setContextProperty("gstreamerPipeline", &myPipeline);
 
