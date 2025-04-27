@@ -122,8 +122,8 @@ Window {
         y: settingsManager.logoPosY
         source: settingsManager.logoPath === "" ? "qrc:/icons/settings.png" : settingsManager.logoPath
         fillMode: Image.PreserveAspectFit
-        width: 300
-        height: 300
+        width: 250
+        height: 250
 
         MouseArea {
             anchors.fill: parent
