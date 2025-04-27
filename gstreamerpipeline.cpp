@@ -46,7 +46,7 @@ GstreamerPipeline::GstreamerPipeline(uint width, uint height, QObject *parent)
 
     g_object_set(libcameraSrc, "af-mode", 2, NULL);
 
-    g_object_set(waylandSink, "fullscreen", TRUE, NULL);
+    g_object_set(waylandSink, "fullscreen", TRUE, "rotate-method", 4, NULL);
 
     g_object_set(m_fakeSink, "sync", TRUE, "signal-handoffs", TRUE, NULL);
     //g_signal_connect(m_fakeSink, "handoff", G_CALLBACK(on_handoff), this);
@@ -177,6 +177,7 @@ void GstreamerPipeline::on_handoff(GstElement *fakesink, GstBuffer *buffer, GstP
     {
         // Write buffer data to file
         QImage image(map.data, currentPipeline->m_videoWidth, currentPipeline->m_videoHeight, QImage::Format_RGBX8888);
+	image.mirror(true, false);
         if( image.save(currentPipeline->m_lastPictureFilename))
             qDebug() << "Image succesfully saved at location " << currentPipeline->m_lastPictureFilename;
         else
