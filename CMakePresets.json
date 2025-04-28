@@ -1,0 +1,49 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": {
+      "major": 3,
+      "minor": 21,
+      "patch": 0
+    },
+    "include": [
+    ],
+    "configurePresets": [
+      {
+        "name": "debug",
+        "hidden": false,
+        "generator": "Unix Makefiles",
+        "description": "Configure for local debug build",
+        "binaryDir": "${sourceDir}/build-debug",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Debug"
+        }
+      },
+      {
+        "name": "release",
+        "hidden": false,
+        "generator": "Unix Makefiles",
+        "description": "Configure for local release build",
+        "binaryDir": "${sourceDir}/build-release",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release"
+        }
+      }
+    ],
+    "buildPresets": [
+      {
+        "name": "build-debug",
+        "configurePreset": "debug",
+        "description": "Build the local debug configuration",
+        "hidden": false,
+        "jobs": 4
+      },
+      {
+        "name": "build-release",
+        "configurePreset": "release",
+        "description": "Build the local release configuration",
+        "hidden": false,
+        "jobs": 4
+      }
+    ]
+  }
+  
