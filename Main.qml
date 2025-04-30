@@ -198,6 +198,25 @@ Window {
         }
     }
 
+    ErrorDialog {
+        id: errorDialog
+        visible: false
+        anchors.centerIn: parent
+
+        onClosed: () => {
+            printer.clearPrinterError()
+        }
+    }
+
+    Connections {
+        target: printer
+        function onPrinterRaisedError() {
+            console.log("onPrinterRaisedError")
+            errorDialog.message = printer.printerErrorMessage
+            errorDialog.visible = true
+        }
+    }
+
     function takeAPicture() {
         console.log("Take a Picture");
         var savePath = settingsManager.saveImageLocation.toString() + "/" + Qt.formatDateTime(new Date(), "yyMMdd_hhmms") + ".jpg";

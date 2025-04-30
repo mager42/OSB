@@ -35,7 +35,7 @@ qt_add_executable(appOpenSnapBooth
 qt_add_qml_module(appOpenSnapBooth
     URI OpenSnapBooth
     VERSION 1.0
-    QML_FILES Main.qml Settings.qml Gallery.qml PhotoViewer.qml DoubleSpinBox.qml CountDown.qml ShutterButton.qml Flash.qml CustomButton.qml ConfirmationDialog.qml
+    QML_FILES Main.qml Settings.qml Gallery.qml PhotoViewer.qml DoubleSpinBox.qml CountDown.qml ShutterButton.qml Flash.qml CustomButton.qml ConfirmationDialog.qml ErrorDialog.qml
 )
 
 set_target_properties(appOpenSnapBooth PROPERTIES
@@ -53,6 +53,7 @@ target_link_libraries(appOpenSnapBooth
     ${GSTREAMER_LIBRARIES}
     ${GST_PLG_BASE_LIBRARIES}
     ${GST_APP_LIBRARIES}
+    ${CUPS_LIBRARIES}
 )
 
 install(TARGETS appOpenSnapBooth
