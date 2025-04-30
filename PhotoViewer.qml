@@ -32,12 +32,14 @@ Item {
         CustomButton {
             id: printerButton
             source: "qrc:/icons/printer.png"
+            visible: printer.isPrinterReady
 
             onClicked: {
                 var fileToPrint = photoViewer.source.replace(/^(file:\/{2})/,"");
                 // unescape html codes like '%23' for '#'
                 fileToPrint = decodeURIComponent(fileToPrint);
-                pictureUtils.printPicture(fileToPrint)
+                //pictureUtils.printPicture(fileToPrint)
+                printer.printFile(fileToPrint)
                 console.log("Trying to print the photo ", fileToPrint)
             }
         }

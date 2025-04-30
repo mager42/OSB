@@ -14,9 +14,12 @@ pkg_check_modules(GSTREAMER REQUIRED gstreamer-1.0)
 pkg_check_modules(GST_PLG_BASE REQUIRED gstreamer-gl-1.0)
 pkg_check_modules(GST_APP REQUIRED gstreamer-app-1.0)
 
+find_package(Cups REQUIRED)
+
 include_directories(${GSTREAMER_INCLUDE_DIRS})
 include_directories(${GST_PLG_BASE_INCLUDE_DIRS})
 include_directories(${GST_APP_INCLUDE_DIRS})
+include_directories(${CUPS_INCLUDE_DIRS})
 link_directories(${GSTREAMER_LIBRARY_DIRS})
 
 qt_add_executable(appOpenSnapBooth
@@ -24,6 +27,8 @@ qt_add_executable(appOpenSnapBooth
     settingsmanager.h settingsmanager.cpp
     pictureutils.h pictureutils.cpp
     gstreamerpipeline.h gstreamerpipeline.cpp
+    printer.hpp
+    cups_printer.hpp cups_printer.cpp
     resources.qrc
 )
 
